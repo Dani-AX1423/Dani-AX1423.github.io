@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Daniel Raj</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daniel Raj V — Developer Portfolio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Custom cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
+    <!-- ── NAV ─────────────────────────────── -->
+    <nav id="main-nav">
+        <div class="nav-inner">
+            <span class="nav-logo">daniel_raj_v</span>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#achievements">Awards</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── HERO ─────────────────────────────── -->
+    <div id="hero">
+        <div class="hero-text">
+            <div class="hero-label load-1">System Programming Enthusiasts</div>
+            <h1 class="hero-name load-2">Daniel Raj V</h1>
+            <div class="hero-role load-3">LyTrix Language System Developer</div>
+            <p class="hero-desc load-4">
+                I focus on understanding how systems work internally — from execution flow to language design.
+                Currently building LyTrix, a custom programming language with its own interpreter and compiler.
+            </p>
+            <div class="hero-actions load-5">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="https://github.com/Dani-AX1423" target="_blank" class="btn btn-ghost">GitHub</a>
+                <a href="Daniel_Raj_V_Resume.pdf" target="_blank" class="btn btn-ghost">Resume</a>
+            </div>
+        </div>
+
+        <div class="hero-photo-wrap load-6">
+            <div class="hero-photo">
+                <!-- Replace with: <img src="your-photo.jpg" alt="Daniel Raj V"> -->
+                <div class="photo-placeholder">Insert<br>photo here</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── ABOUT ─────────────────────────────── -->
+    <div id="about" class="section">
+        <div class="section-heading reveal">01 — About</div>
+        <h2 class="section-title reveal">Who I Am</h2>
+
+        <div class="about-grid">
+            <div class="reveal">
+                <p class="about-para">
+                    I like understanding how systems work internally rather than just using them.
+                    My interest lies in compilers, execution flow, and building structured logic from scratch.
+                </p>
+                <p class="about-para">
+                    LyTrix is my primary project, where I design and implement a programming language system
+                    with both interpreter and compiler architecture. It reflects how I approach problems —
+                    breaking them down into smaller, logical parts.
+                </p>
+                <p class="about-para">
+                    I prefer simple and clear designs over unnecessary complexity, and I enjoy working close
+                    to the system level where control and structure matter the most.
+                </p>
+            </div>
+
+            <div class="about-meta reveal">
+                <div class="meta-row">
+                    <span class="meta-key">Email</span>
+                    <span class="meta-val"><a href="mailto:fortunebros86@gmail.com">fortunebros86@gmail.com</a></span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-key">Location</span>
+                    <span class="meta-val">Chennai, Tamil Nadu, India</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-key">GitHub</span>
+                    <span class="meta-val"><a href="https://github.com/Dani-AX1423"
+                            target="_blank">Dani-AX1423</a></span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-key">LinkedIn</span>
+                    <span class="meta-val" style="color:var(--text-muted)">Add your LinkedIn here</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-key">Phone</span>
+                    <span class="meta-val">+91 9789802645</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-key">Education</span>
+                    <span class="meta-val">B.Tech (IT), LICET (2024 – Present)</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-key">Languages</span>
+                    <span class="meta-val">Tamil (Native) · English (Fluent)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PROJECTS ───────────────────────────── -->
+    <div id="projects" class="section">
+        <div class="section-heading reveal">02 — Projects</div>
+        <h2 class="section-title reveal">What I've Built</h2>
+
+        <div class="project-main card-hoverable reveal">
+            <div class="project-header">
+                <div>
+                    <div class="project-name">LyTrix</div>
+                    <div class="project-sub">Programming Language System</div>
+                </div>
+                <span class="project-badge badge-active">Active</span>
+            </div>
+
+            <p class="project-desc">
+                LyTrix is a custom programming language developed through two independent implementations,
+                each exploring a different execution model.
+
+                <br><br>
+
+                <strong style="color:var(--text)">LyTrix-R · Interpreter (Completed)</strong><br>
+                Built from scratch to handle expression evaluation, type handling, and execution flow.
+
+                <br><br>
+
+                <strong style="color:var(--text)">LyTrix-Q · Compiler (In Progress)</strong><br>
+                A separate compiler implementation with a different internal structure, targeting QBE as backend.
+
+                <br><br>
+
+                Both implementations share the same language idea but are developed independently to understand
+                system-level behavior and execution design.
+            </p>
+
+            <div class="tag-row">
+                <span class="tag">Lexer</span>
+                <span class="tag">Parser</span>
+                <span class="tag">AST</span>
+                <span class="tag">Execution Flow</span>
+                <span class="tag">System Design</span>
+            </div>
+
+            <div class="tag-row">
+                <span class="tag tag-lang">Java</span>
+                <span class="tag">LyTrix-R (Done)</span>
+                <span class="tag">LyTrix-Q (Ongoing)</span>
+            </div>
+
+            <a href="https://github.com/Dani-AX1423/LyTrix" target="_blank" class="project-link">View on GitHub
+                →</a>
+        </div>
+
+        <div class="project-sub-grid">
+            <div class="project-card card-hoverable reveal">
+                <div class="project-header" style="margin-bottom:8px">
+                    <div class="card-name">E-Seva</div>
+                    <span class="project-badge badge-completed">Completed</span>
+                </div>
+                <div class="card-sub">Complaint Management System</div>
+                <p class="card-desc">
+                    A web application where users can register complaints and police can view
+                    and mark them as resolved. Built using MySQL with HTML, CSS, and JavaScript.
+                </p>
+                <div class="tag-row">
+                    <span class="tag tag-lang">MySQL</span>
+                    <span class="tag tag-lang">HTML/CSS</span>
+                    <span class="tag tag-lang">JavaScript</span>
+                </div>
+            </div>
+
+            <div class="project-card card-hoverable reveal" style="transition-delay:0.08s">
+                <div class="project-header" style="margin-bottom:8px">
+                    <div class="card-name">2-Bit Adder</div>
+                    <span class="project-badge badge-completed">Completed</span>
+                </div>
+                <div class="card-sub">Digital Logic Circuit</div>
+                <p class="card-desc">
+                    Implemented a 2-bit binary adder and displayed output in decimal form
+                    using digital electronics concepts.
+                </p>
+                <div class="tag-row">
+                    <span class="tag">Logic Gates</span>
+                    <span class="tag">Binary Arithmetic</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SKILLS ─────────────────────────────── -->
+    <div id="skills" class="section">
+        <div class="section-heading reveal">03 — Skills</div>
+        <h2 class="section-title reveal">Technical Skills</h2>
+
+        <div class="skills-grid">
+            <div class="skill-block card-hoverable reveal">
+                <div class="skill-block-title">Languages</div>
+                <ul class="skill-list">
+                    <li>C</li>
+                    <li>Java</li>
+                    <li>Python</li>
+                </ul>
+            </div>
+
+            <div class="skill-block card-hoverable reveal" style="transition-delay:0.06s">
+                <div class="skill-block-title">Concepts</div>
+                <ul class="skill-list">
+                    <li>Data Structures</li>
+                    <li>System Design</li>
+                    <li>OS Basics</li>
+                </ul>
+            </div>
+
+            <div class="skill-block card-hoverable reveal" style="transition-delay:0.12s">
+                <div class="skill-block-title">Tools</div>
+                <ul class="skill-list">
+                    <li>Linux (Arch)</li>
+                    <li>Git</li>
+                    <li>Terminal</li>
+                    <li>Hyprland</li>
+                </ul>
+            </div>
+
+            <div class="skill-block card-hoverable reveal" style="transition-delay:0.18s">
+                <div class="skill-block-title">Focus</div>
+                <ul class="skill-list">
+                    <li>Compiler Design</li>
+                    <li>Interpreter Development</li>
+                    <li>System Programming</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── ACHIEVEMENTS ───────────────────────── -->
+    <div id="achievements" class="section">
+        <div class="section-heading reveal">04 — Recognition</div>
+        <h2 class="section-title reveal">Achievements</h2>
+
+        <div class="ach-list">
+            <div class="ach-item card-hoverable reveal">
+                <div class="ach-icon">🏆</div>
+                <div>
+                    <div class="ach-name">1st Place — Try.Code</div>
+                    <div class="ach-detail">ISTE Coding Competition</div>
+                </div>
+                <div class="ach-award">1st</div>
+            </div>
+
+            <div class="ach-item card-hoverable reveal" style="transition-delay:0.07s">
+                <div class="ach-icon">🏆</div>
+                <div>
+                    <div class="ach-name">1st Place — Code Relay</div>
+                    <div class="ach-detail">TECHNOVA 2026 (Team Event)</div>
+                </div>
+                <div class="ach-award">1st</div>
+            </div>
+
+            <div class="ach-item card-hoverable reveal" style="transition-delay:0.14s">
+                <div class="ach-icon">🖥️</div>
+                <div>
+                    <div class="ach-name">Arch Linux + Hyprland Setup</div>
+                    <div class="ach-detail">Custom dual-boot environment for development</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── CONTACT ────────────────────────────── -->
+    <div id="contact" class="section">
+        <div class="section-heading reveal">05 — Contact</div>
+        <h2 class="section-title reveal">Get in Touch</h2>
+
+        <div class="contact-grid">
+            <div class="reveal">
+                <p class="contact-desc">
+                    Open to internships and opportunities related to system programming,
+                    compiler design, and low-level development.
+                </p>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fortunebros86@gmail.com" target="_blank"
+                    class="btn btn-primary">
+                    Send Email
+                </a>
+            </div>
+
+            <div class="contact-links reveal">
+                <div class="contact-row">
+                    <span class="contact-key">Email</span>
+                    <span class="contact-val"><a
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=fortunebros86@gmail.com"
+                            target="_blank">fortunebros86@gmail.com</a></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-key">GitHub</span>
+                    <span class="contact-val"><a href="https://github.com/Dani-AX1423"
+                            target="_blank">github.com/Dani-AX1423</a></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-key">Location</span>
+                    <span class="contact-val">Chennai, Tamil Nadu, India</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── FOOTER ─────────────────────────────── -->
+    <footer>
+        <p class="footer-text">Daniel Raj V · LyTrix Language System Developer · Chennai, India</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
