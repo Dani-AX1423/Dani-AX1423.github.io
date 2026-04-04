@@ -493,7 +493,7 @@ nav.scrolled {
 }
 
 .meta-row:last-child {
-    border-bottom: none;
+    border-bottom: none;1
 }
 
 .meta-row:hover {
@@ -526,6 +526,12 @@ nav.scrolled {
 
 .meta-val a:hover {
     color: var(--accent);
+}
+
+.meta-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
 }
 
 /* ─── CARD HOVER BASE ────────────────────────── */
