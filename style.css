@@ -390,11 +390,13 @@
     /* ─── PHOTO ──────────────────────────────────── */
     .hero-photo-wrap {
         flex-shrink: 0;
+        min-width: 130px;
     }
+    
 
     .hero-photo {
-        width: 118px;
-        height: 118px;
+        width: 200px;
+        height: 200px;
         border-radius: 50%;
         background: var(--bg-card);
         border: 2px solid var(--border);
@@ -406,6 +408,7 @@
         overflow: hidden;
         position: relative;
         transition: border-color 0.3s, box-shadow 0.3s;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
     .hero-photo::after {
@@ -430,6 +433,7 @@
         height: 100%;
         object-fit: cover;
         border-radius: 50%;
+        object-position: 50% 20%;
     }
 
     .photo-placeholder {
@@ -905,6 +909,11 @@
             flex-wrap: wrap;
             padding-top: 64px;
             gap: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            /* increase this */
         }
 
         .hero-photo {
