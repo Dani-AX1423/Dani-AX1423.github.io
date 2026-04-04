@@ -441,11 +441,11 @@ nav.scrolled {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 20%;
+    object-position: 40% 50%;
+    transform: scale(3.0);
+    transform-origin: 50% 45%;
     display: block;
     border-radius: 50%;
-    image-rendering: -webkit-optimize-contrast;
-    -webkit-font-smoothing: antialiased;
 }
 
 .photo-placeholder {
