@@ -1,600 +1,1238 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daniel Raj V — LyTrix Language Developer & System Programming Enthusiast</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Raj V — LyTrix Language Developer & System Programmer</title>
+  <meta name="description" content="Daniel Raj V — B.Tech IT Student at LICET Chennai. Developer of the LyTrix Language System, system programming enthusiast, Linux developer." />
+  <meta property="og:title" content="Daniel Raj V — LyTrix Language Developer" />
+  <meta property="og:description" content="Building programming languages from scratch. B.Tech IT · LICET Chennai · 2024-2028." />
+  <meta name="theme-color" content="#FF5F1F" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='4' fill='%23000'/><path d='M22 22 L62 50 L22 78 M68 78 L82 78' stroke='%23FF5F1F' stroke-width='11' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>" />
 
-    <!-- SEO & Social Meta Tags -->
-    <meta name="description"
-        content="Personal developer portfolio of Daniel Raj V — B.Tech IT Student at LICET Chennai, Developer of LyTrix Language System and System Programming Enthusiast." />
-    <meta name="keywords"
-        content="Daniel Raj V, LyTrix, LyTrix-R, LyTrix-Q, Compiler Design, Interpreter, System Programming, Linux, LICET, Chennai" />
-    <meta name="author" content="Daniel Raj V" />
-    <meta name="theme-color" content="#ff6600" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,800&family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-    <!-- Open Graph / Facebook / LinkedIn -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://github.com/Dani-AX1423" />
-    <meta property="og:title" content="Daniel Raj V — LyTrix Language Developer & System Programming Enthusiast" />
-    <meta property="og:description"
-        content="B.Tech IT Student at LICET Chennai. Building LyTrix programming language system, exploring Linux, networking, and system architecture." />
-    <meta property="og:image" content="dani_photo.jpeg" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Daniel Raj V — Portfolio" />
-    <meta property="twitter:description"
-        content="B.Tech IT Student at LICET Chennai. Building LyTrix programming language system, exploring Linux and networking." />
-    <meta property="twitter:image" content="dani_photo.jpeg" />
-
-    <!-- Inline SVG Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><path d='M30 30 L55 50 L30 70 M60 70 L75 70' stroke='%23ff6600' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
-
-    <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+<div id="spb"></div>
+<div id="c-dot"></div>
+<div id="c-ring"></div>
+<div id="toast">Copied to clipboard.</div>
+<button id="btt" aria-label="Back to top">&#8593;</button>
 
-    <!-- Top Reading Scroll Progress Bar -->
-    <div id="scroll-progress"></div>
+<!-- 01. TERMINAL BOOT SEQUENCE INTRO -->
+<div id="boot-screen">
+  <div class="boot-log-window">
+    <div class="flex items-center justify-between mb-4 border-b border-white/10 pb-2">
+      <span class="text-xs text-stone-400 font-mono">BOOT_INITIALIZER // DANIEL_RAJ_V_OS</span>
+      <button id="boot-skip" class="text-xs text-orange-500 hover:underline font-mono">ESC / SKIP [&#8677;]</button>
+    </div>
+    <div id="boot-log" class="text-xs text-emerald-400 min-h-[140px] font-mono"></div>
+  </div>
+</div>
 
-    <!-- Ambient Particle Canvas Background -->
-    <canvas id="bg-canvas"></canvas>
+<!-- 02. COMMAND PALETTE (CMD+K) MODAL -->
+<div id="cmd-palette-backdrop">
+  <div class="cmd-modal">
+    <input type="text" id="cmd-input" class="cmd-input" placeholder="Type a command or search route... (Esc to close)" />
+    <ul id="cmd-results" class="cmd-results"></ul>
+  </div>
+</div>
 
-    <!-- Custom Cursor -->
-    <div id="cursor-dot"></div>
-    <div id="cursor-ring"></div>
+<!-- 03. MOBILE NAVIGATION DRAWER -->
+<nav id="m-drawer" aria-label="Mobile Navigation">
+  <a href="#overview" class="drawer-a">Overview</a>
+  <a href="#about" class="drawer-a">About</a>
+  <a href="#lytrix" class="drawer-a">LyTrix System</a>
+  <a href="#parkin-today" class="drawer-a">Parkin Today</a>
+  <a href="#log" class="drawer-a">Systems Log</a>
+  <a href="#resume" class="drawer-a">Resume</a>
+  <a href="#contact" class="drawer-a">Contact</a>
+</nav>
 
-    <!-- Toast Container -->
-    <div id="toast-container"></div>
-
-    <!-- ── NAVIGATION ────────────────────────────── -->
-    <nav id="main-nav">
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">
-                <span class="nav-logo-symbol"></span>
-                daniel_raj_v
-            </a>
-
-            <!-- Desktop Links -->
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#lytrix">LyTrix Engine</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-
-            <!-- Mobile Menu Toggle Button -->
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Drawer Overlay -->
-    <div class="mobile-drawer" id="mobile-drawer">
-        <ul class="mobile-nav-links">
-            <li><a href="#about" class="mobile-link">About</a></li>
-            <li><a href="#lytrix" class="mobile-link">LyTrix Engine</a></li>
-            <li><a href="#projects" class="mobile-link">Projects</a></li>
-            <li><a href="#skills" class="mobile-link">Skills</a></li>
-            <li><a href="#achievements" class="mobile-link">Achievements</a></li>
-            <li><a href="#contact" class="mobile-link">Contact</a></li>
-        </ul>
+<!-- 04. NAVIGATION HUD & BREADCRUMB -->
+<header id="nav">
+  <div class="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
+    <a href="#overview" class="flex items-center gap-2.5">
+      <span style="width:8px;height:8px;background:var(--accent-ore);box-shadow:0 0 10px var(--accent-ore);display:inline-block;border-radius:2px"></span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent-ore);text-transform:uppercase;font-weight:600">DANIEL_RAJ_V</span>
+    </a>
+    
+    <div id="hud-breadcrumb" class="hud-breadcrumb hidden md:block">
+      <span class="text-stone-500">SYS //</span> <span class="crumb-active">~/overview</span>
     </div>
 
-    <!-- ── HERO SECTION ──────────────────────────── -->
-    <div id="hero">
-        <div class="hero-text">
-            <div class="status-badge load-1">
-                <span class="status-dot"></span>
-                B.Tech IT Student @ LICET (2024–2028)
-            </div>
+    <ul class="nav-links flex items-center gap-8" role="list">
+      <li><a href="#overview" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#lytrix" class="nav-link">LyTrix</a></li>
+      <li><a href="#log" class="nav-link">Log</a></li>
+      <li><a href="#resume" class="nav-link">Resume</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
 
-            <h1 class="hero-name load-2">Daniel Raj V</h1>
-
-            <div class="hero-role-block load-3">
-                <div class="hero-role-title">System Programming Enthusiast</div>
-                <div class="hero-role-sub">LyTrix Language System Developer</div>
-            </div>
-
-            <p class="hero-desc load-4">
-                I focus on understanding how systems work internally — from execution flow and language design to Linux and networking.
-                I learn by building things from the ground up and exploring how the pieces fit together.
-            </p>
-
-            <div class="hero-actions load-5">
-                <a href="#projects" class="btn btn-primary">View Projects →</a>
-                <a href="https://github.com/Dani-AX1423" target="_blank" class="btn btn-ghost">GitHub ↗</a>
-                <a href="Daniel_Raj_V_Resume.pdf" target="_blank" class="btn btn-ghost">Resume 📄</a>
-            </div>
-        </div>
-
-        <div class="hero-photo-wrap load-6">
-            <div class="hero-photo-outer">
-                <div class="hero-photo">
-                    <img src="dani_photo.jpeg" alt="Daniel Raj V — Profile Photo" />
-                </div>
-            </div>
-        </div>
+    <div class="flex items-center gap-4">
+      <button onclick="document.dispatchEvent(new KeyboardEvent('keydown', {key: 'k', metaKey: true}))" class="px-2.5 py-1 text-xs border border-white/15 rounded bg-white/5 hover:border-orange-500 transition text-stone-300 font-mono">⌘K Search</button>
+      <div class="ham-wrap flex flex-col gap-1.5 p-2 cursor-pointer" id="ham-btn">
+        <span class="ham-bar"></span>
+        <span class="ham-bar"></span>
+        <span class="ham-bar"></span>
+      </div>
     </div>
+  </div>
+</header>
 
-    <!-- ── ABOUT SECTION ─────────────────────────── -->
-    <div id="about" class="section">
-        <div class="section-heading reveal">01 — Profile</div>
-        <h2 class="section-title reveal">About Me</h2>
 
-        <div class="about-grid">
-            <div class="reveal">
-                <p class="about-para">
-                    I like understanding how systems work internally rather than just using them. My interests center around
-                    programming languages, execution flow, interpreters, compilers, Linux, networking, and structured system design.
-                </p>
-                <p class="about-para">
-                    Most of my projects begin with curiosity about how something works underneath. Instead of stopping at the surface,
-                    I prefer building and experimenting until I understand the underlying structure.
-                </p>
-                <p class="about-para">
-                    Currently pursuing my Bachelor of Technology in Information Technology at Loyola-ICAM College of Engineering
-                    and Technology (LICET), Chennai.
-                </p>
-            </div>
-
-            <div class="about-meta reveal">
-                <div class="meta-row">
-                    <span class="meta-key">Status</span>
-                    <span class="meta-val">B.Tech IT Student (2024–2028)</span>
-                </div>
-                <div class="meta-row">
-                    <span class="meta-key">College</span>
-                    <span class="meta-val">LICET, Chennai</span>
-                </div>
-                <div class="meta-row">
-                    <span class="meta-key">Location</span>
-                    <span class="meta-val">Chennai, Tamil Nadu, India</span>
-                </div>
-                <div class="meta-row">
-                    <span class="meta-key">Email</span>
-                    <span class="meta-val"><a href="mailto:fortunebros86@gmail.com">fortunebros86@gmail.com</a></span>
-                </div>
-                <div class="meta-row">
-                    <span class="meta-key">GitHub</span>
-                    <span class="meta-val"><a href="https://github.com/Dani-AX1423" target="_blank">Dani-AX1423 ↗</a></span>
-                </div>
-                <div class="meta-row">
-                    <span class="meta-key">Languages</span>
-                    <span class="meta-val meta-list">
-                        <span>Tamil (Native)</span>
-                        <span>English (Fluent)</span>
-                        <span>French (Beginner)</span>
-                    </span>
-                </div>
-            </div>
+<!-- =================================================================== -->
+<!-- VIEW 01: HOME OVERVIEW (CINEMATIC DOORWAY SCROLL)                  -->
+<!-- =================================================================== -->
+<main id="view-overview" class="view-page active-view">
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="max-w-6xl mx-auto px-8 w-full py-24 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-16">
+        <div class="flex-1">
+          <div class="sec-mark mb-6">B.Tech Information Technology &middot; LICET Chennai &middot; 2024&ndash;2028</div>
+          <h1 class="hero-name mb-6">Daniel<br /><em>Raj V.</em></h1>
+          <div class="flex flex-col gap-1.5 mb-8">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--accent-ore);font-weight:600;letter-spacing:0.1em">System Programming Enthusiast</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.12em;color:#9ca3af">LyTrix Language System Developer</span>
+          </div>
+          <p class="text-base leading-relaxed max-w-lg mb-10 text-gray-300 font-light">
+            I focus on understanding how systems work internally &mdash; from execution flow and language design to Linux and networking.
+            I learn by building things from the ground up and exploring how the pieces fit together.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#lytrix" class="cta cta-fill">Explore LyTrix Language &#8594;</a>
+            <a href="#about" class="cta">About Me &#8594;</a>
+            <a href="Daniel_Raj_V_Resume.pdf" target="_blank" class="cta">Resume PDF &#8599;</a>
+          </div>
         </div>
+
+        <!-- HERO PROFILE PICTURE -->
+        <div class="flex flex-col items-center gap-6">
+          <div class="hero-photo-ring">
+            <div class="w-[260px] h-[260px] md:w-[280px] md:h-[280px] rounded-full overflow-hidden bg-black">
+              <img src="dani_photo.jpeg" alt="Daniel Raj V" class="w-full h-full object-cover object-top" />
+            </div>
+          </div>
+          <!-- STAT CHIPS -->
+          <div class="flex flex-wrap justify-center gap-3">
+            <div class="stat-chip">
+              <div class="stat-chip-num">2&#215;</div>
+              <div class="stat-chip-lbl">Competition Winner</div>
+            </div>
+            <div class="stat-chip">
+              <div class="stat-chip-num">2</div>
+              <div class="stat-chip-lbl">Execution Engines</div>
+            </div>
+            <div class="stat-chip">
+              <div class="stat-chip-num">&#8734;</div>
+              <div class="stat-chip-lbl">Build Curiosity</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- ── FLAGSHIP PROJECT — LYTRIX ─────────────── -->
-    <div id="lytrix" class="section">
-        <div class="section-heading reveal">02 — Flagship Project</div>
-        <h2 class="section-title reveal">LyTrix — Programming Language System</h2>
+  <div class="div-line"></div>
 
-        <div class="project-main card-hoverable reveal">
-            <div class="project-header">
-                <div>
-                    <div class="project-name">LyTrix</div>
-                    <div class="project-sub">Programming Language System</div>
-                </div>
-                <a href="https://github.com/Dani-AX1423/LyTrix" target="_blank" class="project-badge badge-active">GitHub Repository ↗</a>
-            </div>
+  <!-- DOORWAY 01: ABOUT ME SUMMARY -->
+  <section class="py-24">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="sec-mark mb-4 rv">01 &mdash; DOORWAY // PROFILE</div>
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12 rv">
+        <div>
+          <h2 class="ed-head" style="font-size:clamp(32px,4.5vw,56px)">About<br /><em>Daniel.</em></h2>
+        </div>
+        <a href="#about" class="back-overview-btn">Expand Deep-Dive View &#8594;</a>
+      </div>
 
-            <p class="project-desc">
-                LyTrix is a programming language system developed to understand language architecture, parsing, execution flow,
-                and compiler concepts. It encompasses two <strong>independent implementations</strong> built in Java, each exploring a distinct internal architecture and execution model.
-            </p>
+      <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+        <div class="space-y-6 rv text-gray-300 font-light leading-relaxed">
+          <p>I am a B.Tech IT student at <span class="text-white font-medium">LICET Chennai</span> obsessed with what happens under the abstraction layer. While most developers begin with high-level web frameworks, I built my own programming language engine (LyTrix) to understand tokenization, AST evaluation, and intermediate representation first-hand.</p>
+          <p>From configuring custom Hyprland Wayland environments on Arch Linux to reverse engineering gate delays on physical binary adders, I believe true software engineering demands knowing how bit patterns become execution flow.</p>
+          
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="tier tier-ore">Arch Linux + Hyprland</span>
+            <span class="tier tier-ore">Try.Code Winner</span>
+            <span class="tier tier-ore">TECHNOVA 2026 Winner</span>
+          </div>
+        </div>
 
-            <!-- Dual Implementation Breakdown -->
-            <div class="lytrix-dual-grid">
-                <!-- LyTrix-R -->
-                <div class="impl-card">
-                    <div class="impl-header">
-                        <div class="impl-title">LyTrix-R · Interpreter</div>
-                        <span class="project-badge badge-completed">Completed</span>
-                    </div>
-                    <p class="impl-desc">
-                        Interpreter implementation built from scratch to handle expression evaluation, AST traversal, and execution flow.
-                    </p>
-                    <ul class="impl-features">
-                        <li>Custom Lexer / Tokenization</li>
-                        <li>Parser & Abstract Syntax Tree (AST)</li>
-                        <li>Node Visitor / Interpreter Architecture</li>
-                        <li>Expression Evaluation & Type Handling</li>
-                        <li>EOM-Based Return Concept</li>
-                        <li><code>BackLine()</code> Main-Function Replacement</li>
-                    </ul>
-                    <div class="tag-row">
-                        <span class="tag tag-lang">Java</span>
-                        <span class="tag">Interpreter</span>
-                        <span class="tag">AST Visitor</span>
-                    </div>
-                </div>
+        <a href="#about" class="data-panel rv p-8 block hover:border-orange-500/60 transition group">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-mono text-xs text-orange-400 font-bold tracking-wider uppercase">SYSTEM SPECIFICATION</span>
+            <span class="text-xs font-mono text-gray-400 group-hover:text-orange-400 transition">CLICK TO EXPAND &#8594;</span>
+          </div>
+          <div class="stat-row"><span class="stat-k">Status</span><span class="stat-v">B.Tech IT &middot; 2024&ndash;2028</span></div>
+          <div class="stat-row"><span class="stat-k">Institution</span><span class="stat-v">LICET, Chennai</span></div>
+          <div class="stat-row"><span class="stat-k">Primary Language</span><span class="stat-v">LyTrix (Custom Engine)</span></div>
+          <div class="stat-row"><span class="stat-k">OS Workflow</span><span class="stat-v">Arch Linux + Hyprland</span></div>
+          <div class="stat-row"><span class="stat-k">Spoken Languages</span><span class="stat-v">Tamil &middot; English &middot; French</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-                <!-- LyTrix-Q -->
-                <div class="impl-card">
-                    <div class="impl-header">
-                        <div class="impl-title">LyTrix-Q · Compiler</div>
-                        <span class="project-badge badge-in-progress">In Progress</span>
-                    </div>
-                    <p class="impl-desc">
-                        A separate compiler-oriented implementation with a different internal architecture targeting intermediate code generation.
-                    </p>
-                    <ul class="impl-features">
-                        <li>Compiler Pipeline Architecture</li>
-                        <li>Intermediate Representation (IR)</li>
-                        <li>QBE Backend Integration</li>
-                        <li>SSA-Oriented Transformation Concepts</li>
-                        <li>Planned Native Compilation Target</li>
-                    </ul>
-                    <div class="tag-row">
-                        <span class="tag tag-lang">Java</span>
-                        <span class="tag tag-lang">QBE IR</span>
-                        <span class="tag">Compiler Pipeline</span>
-                    </div>
-                </div>
-            </div>
+  <div class="div-line"></div>
 
-            <!-- Interactive Compiler Pipeline Visualizer -->
-            <div class="pipeline-container" style="margin-top: 32px;">
-                <div class="pipeline-header">
-                    <div class="pipeline-title">⚡ Interactive LyTrix Execution Visualizer</div>
-                    <span class="tag tag-lang">Click any stage to inspect</span>
-                </div>
+  <!-- DOORWAY 02: FLAGSHIP LYTRIX LANGUAGE -->
+  <section class="py-24">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="sec-mark mb-4 rv">02 &mdash; DOORWAY // FLAGSHIP SYSTEM</div>
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12 rv">
+        <div>
+          <h2 class="ed-head" style="font-size:clamp(32px,4.5vw,56px)">LyTrix<br /><em>Language System.</em></h2>
+        </div>
+        <a href="#lytrix" class="back-overview-btn">Full Pipeline Case Study &#8594;</a>
+      </div>
 
-                <div class="pipeline-steps">
-                    <div class="step-card active" data-step="0">
-                        <div class="step-num">STAGE 01</div>
-                        <div class="step-name">Source Code</div>
-                    </div>
-                    <div class="step-card" data-step="1">
-                        <div class="step-num">STAGE 02</div>
-                        <div class="step-name">Lexer Tokens</div>
-                    </div>
-                    <div class="step-card" data-step="2">
-                        <div class="step-num">STAGE 03</div>
-                        <div class="step-name">Parser AST</div>
-                    </div>
-                    <div class="step-card" data-step="3">
-                        <div class="step-num">STAGE 04</div>
-                        <div class="step-name">QBE IR (LyTrix-Q)</div>
-                    </div>
-                    <div class="step-card" data-step="4">
-                        <div class="step-num">STAGE 05</div>
-                        <div class="step-name">Execution Output</div>
-                    </div>
-                </div>
+      <!-- DUAL CARDS -->
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <a href="#lytrix" class="data-panel rv p-8 block group">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-mono text-base font-bold text-white group-hover:text-orange-400 transition">LyTrix-R &middot; Tree-Walk Interpreter</span>
+            <span class="tier tier-ok">Completed</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-6 font-light leading-relaxed">AST Visitor evaluation model built in Java. Implements custom lexer, recursive descent parser, runtime scoping, and <code class="text-orange-400">BackLine()</code> directives.</p>
+          <div class="flex items-center justify-between text-xs font-mono text-orange-400">
+            <span>Explore Tree-Walk Engine</span>
+            <span>&#8594;</span>
+          </div>
+        </a>
 
-                <div class="pipeline-preview">
-                    <span class="preview-tag" id="pipeline-stage-tag">STAGE 01 — SOURCE CODE</span>
-                    <pre id="pipeline-code-display">LTProgramFileCode main() {
+        <a href="#lytrix" class="data-panel rv p-8 block group">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-mono text-base font-bold text-white group-hover:text-orange-400 transition">LyTrix-Q &middot; IR Compiler Backend</span>
+            <span class="tier tier-wip">In Active Dev</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-6 font-light leading-relaxed">Direct compilation pass targeting QBE (Quick Backend Engine) Intermediate Representation in SSA form for native code emission.</p>
+          <div class="flex items-center justify-between text-xs font-mono text-orange-400">
+            <span>Inspect QBE SSA IR Pass</span>
+            <span>&#8594;</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- INTERACTIVE PIPELINE DEMO PREVIEW -->
+      <div class="data-panel rv p-8 w-full">
+        <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+        <div class="flex items-center justify-between mb-6">
+          <span class="text-xs font-mono text-orange-400 font-bold">&#9889; LIVE 5-STAGE COMPILER PIPELINE</span>
+          <span class="text-xs font-mono text-gray-400">Click any stage node</span>
+        </div>
+        <div class="flex items-end justify-center gap-2 mb-8 flex-wrap" id="pipeline">
+          <div class="pipe-node active" data-step="0"><span class="pn-num">01</span><div class="pn-icon">&#128196;</div><span class="pn-name">Source</span></div>
+          <div class="pipe-arrow">&#8594;</div>
+          <div class="pipe-node" data-step="1"><span class="pn-num">02</span><div class="pn-icon">&#128306;</div><span class="pn-name">Lexer</span></div>
+          <div class="pipe-arrow">&#8594;</div>
+          <div class="pipe-node" data-step="2"><span class="pn-num">03</span><div class="pn-icon">&#127795;</div><span class="pn-name">Parser AST</span></div>
+          <div class="pipe-arrow">&#8594;</div>
+          <div class="pipe-node" data-step="3"><span class="pn-num">04</span><div class="pn-icon">&#9881;&#65039;</div><span class="pn-name">QBE IR</span></div>
+          <div class="pipe-arrow">&#8594;</div>
+          <div class="pipe-node" data-step="4"><span class="pn-num">05</span><div class="pn-icon">&#9989;</div><span class="pn-name">Output</span></div>
+        </div>
+        <div class="code-block">
+          <span class="cb-label" id="pipe-label">STAGE 01 - SOURCE CODE READOUT</span>
+          <pre id="pipe-out" class="text-emerald-400 font-mono">LTProgramFileCode main() {
     LTGlobalVar x = 10 + 20;
     BackLine(x);
 }</pre>
-                </div>
-            </div>
+          <div id="pipe-telemetry" class="mt-3 pt-3 border-t border-white/10 text-xs text-orange-400 font-mono">
+            [TELEMETRY] Stream Speed: 1.48 Mtok/s | Byte Size: 78 bytes | Status: OK
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="div-line"></div>
+
+  <!-- DOORWAY 03: PROJECTS & HARDWARE ADDER -->
+  <section class="py-24">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="sec-mark mb-4 rv">03 &mdash; DOORWAY // CASE STUDIES</div>
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12 rv">
+        <div>
+          <h2 class="ed-head" style="font-size:clamp(32px,4.5vw,56px)">Systems &amp;<br /><em>Projects.</em></h2>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <!-- PARKIN TODAY DOORWAY CARD -->
+        <a href="#parkin-today" class="data-panel rv p-8 block group">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-orange-400">EDGE AI &middot; ANPR</span>
+            <span class="tier tier-ore">Case Study</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-white mb-2 group-hover:text-orange-400 transition">Parkin Today</h3>
+          <p class="text-xs text-gray-400 font-light leading-relaxed mb-6">Automatic License Plate Recognition (ANPR) smart parking infrastructure using Jetson Nano hardware &amp; Node/Express API refactor.</p>
+          <div class="text-xs font-mono text-orange-400">Read Case Study &#8594;</div>
+        </a>
+
+        <!-- LUNA CARIN DOORWAY CARD -->
+        <a href="#luna-carin" class="data-panel rv p-8 block group">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-orange-400">LOCAL AI &middot; PYTHON</span>
+            <span class="tier tier-ore">Case Study</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-white mb-2 group-hover:text-orange-400 transition">Luna Carin</h3>
+          <p class="text-xs text-gray-400 font-light leading-relaxed mb-6">Local intelligence AI assistant interface focusing on privacy, offline processing, and lightweight model orchestration.</p>
+          <div class="text-xs font-mono text-orange-400">Read Case Study &#8594;</div>
+        </a>
+
+        <!-- E-SEVA DOORWAY CARD -->
+        <a href="#eseva" class="data-panel rv p-8 block group">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-orange-400">FULL-STACK &middot; MYSQL</span>
+            <span class="tier tier-ok">Completed</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-white mb-2 group-hover:text-orange-400 transition">E-Seva System</h3>
+          <p class="text-xs text-gray-400 font-light leading-relaxed mb-6">Civic complaint resolution portal built with Express REST APIs, role authentication, and MySQL relational schema.</p>
+          <div class="text-xs font-mono text-orange-400">Read Case Study &#8594;</div>
+        </a>
+
+        <!-- ROAM.VER DOORWAY CARD -->
+        <a href="#roam" class="data-panel rv p-8 block group">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-orange-400">INFRA &middot; LINUX</span>
+            <span class="tier tier-ore">Active Dev</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-white mb-2 group-hover:text-orange-400 transition">ROAM.ver Server</h3>
+          <p class="text-xs text-gray-400 font-light leading-relaxed mb-6">Pocket server environment operating on Android via Termux, Cloudflare Tunnels, and zero-trust remote port forwarding.</p>
+          <div class="text-xs font-mono text-orange-400">Read Case Study &#8594;</div>
+        </a>
+
+        <!-- 2-BIT ADDER DOORWAY CARD -->
+        <a href="#adder" class="data-panel rv p-8 block group sm:col-span-2 lg:col-span-2">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-orange-400">HARDWARE LOGIC &middot; BREADBOARD</span>
+            <span class="tier tier-ok">Hardware Verified</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-white mb-2 group-hover:text-orange-400 transition">2-Bit Binary Adder Hardware Engine</h3>
+          <p class="text-xs text-gray-400 font-light leading-relaxed mb-6">Digital logic implementation using physical logic gates (XOR, AND, OR ICs). Launch the live interactive sandbox to toggle inputs A0/A1 &amp; B0/B1.</p>
+          <div class="flex items-center justify-between text-xs font-mono text-orange-400">
+            <span>Launch Interactive Adder Sandbox &#8594;</span>
+            <span>74LS86 / 74LS08 / 74LS32</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="div-line"></div>
+
+  <!-- DOORWAY 04: SYSTEMS LOG CHANGELOG -->
+  <section class="py-24">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="sec-mark mb-4 rv">04 &mdash; DOORWAY // CHANGELOG</div>
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12 rv">
+        <div>
+          <h2 class="ed-head" style="font-size:clamp(32px,4.5vw,56px)">Systems<br /><em>Log.</em></h2>
+        </div>
+        <a href="#log" class="back-overview-btn">View Full Git-Commit Feed &#8594;</a>
+      </div>
+
+      <div class="data-panel rv p-8">
+        <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+        <div class="space-y-6">
+          <div class="flex items-start gap-4 pb-6 border-b border-white/10">
+            <span class="font-mono text-xs text-orange-400 font-bold">2026-09-10</span>
+            <div>
+              <div class="text-sm font-bold text-white mb-1">LyTrix-Q SSA Form Integration with QBE Backend</div>
+              <div class="text-xs text-gray-400 font-light">Refactored intermediate node generation to emit Single Static Assignment (SSA) virtual registers for QBE optimizer passes.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 pb-6 border-b border-white/10">
+            <span class="font-mono text-xs text-orange-400 font-bold">2026-02-18</span>
+            <div>
+              <div class="text-sm font-bold text-white mb-1">1st Place Win — TECHNOVA 2026 Code Relay</div>
+              <div class="text-xs text-gray-400 font-light">Team WHITE HATTERS placed 1st in the inter-collegiate Code Relay competition organized by Dept of IT &amp; CSI.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="font-mono text-xs text-orange-400 font-bold">2025-11-04</span>
+            <div>
+              <div class="text-sm font-bold text-white mb-1">Arch Linux + Hyprland Custom Dotfiles Milestone</div>
+              <div class="text-xs text-gray-400 font-light">Transitioned primary dev workstation to Arch Linux running Hyprland compositor with custom Bash scripts.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="div-line"></div>
+
+  <!-- DOORWAY 05: RESUME & CONTACT -->
+  <section class="py-24">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- RESUME DOORWAY -->
+        <a href="#resume" class="data-panel rv p-8 block group">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="sec-mark mb-2">05 &mdash; DOORWAY</div>
+          <h3 class="font-serif text-3xl font-bold text-white mb-4 group-hover:text-orange-400 transition">Interactive<br /><em>Resume.</em></h3>
+          <p class="text-xs text-gray-400 font-light leading-relaxed mb-6">In-site resume styled with telemetry section headers, technical matrix, education timeline, and print stylesheet.</p>
+          <div class="text-xs font-mono text-orange-400">View In-Site Resume &#8594;</div>
+        </a>
+
+        <!-- CONTACT DOORWAY -->
+        <a href="#contact" class="data-panel rv p-8 block group">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="sec-mark mb-2">06 &mdash; DOORWAY</div>
+          <h3 class="font-serif text-3xl font-bold text-white mb-4 group-hover:text-orange-400 transition">Get In<br /><em>Touch.</em></h3>
+          <p class="text-xs text-gray-400 font-light leading-relaxed mb-6">Open for compiler, systems programming, and software engineering opportunities. Directly copy email or connect via social platforms.</p>
+          <div class="text-xs font-mono text-orange-400">Open Contact Terminal &#8594;</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 02: /about — ABOUT ME DEEP DIVE                              -->
+<!-- =================================================================== -->
+<main id="view-about" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="hud-breadcrumb"><span class="text-stone-500">SYS //</span> <span class="crumb-active">~/about</span></div>
     </div>
 
-    <!-- ── OTHER PROJECTS HIERARCHY ──────────────── -->
-    <div id="projects" class="section">
-        <div class="section-heading reveal">03 — Projects</div>
-        <h2 class="section-title reveal">Systems, Infrastructure & Software</h2>
+    <div class="sec-mark mb-4">DEEP DIVE // 01</div>
+    <h1 class="ed-head mb-12" style="font-size:clamp(42px,6vw,84px)">About<br /><em>Daniel Raj V.</em></h1>
 
-        <div class="project-hierarchy-grid">
-
-            <!-- ROAM.ver (Major Project) -->
-            <div class="project-card card-hoverable card-major reveal">
-                <div class="project-header">
-                    <div>
-                        <div class="card-name">ROAM.ver — The Pocket Server</div>
-                        <div class="card-sub">Portable Infrastructure & Networking</div>
-                    </div>
-                    <span class="project-badge badge-active">Active / In Development</span>
-                </div>
-
-                <p class="card-desc">
-                    ROAM.ver is a portable server project exploring self-hosted services, networking, and remote access from an Android-based environment.
-                    It is a practical exploration of portable infrastructure and server architecture, utilizing local networking, secure connectivity,
-                    and remote-access mechanisms (such as Cloudflare and ngrok) to operate services without relying solely on traditional hardware.
-                </p>
-
-                <div class="tag-row">
-                    <span class="tag tag-lang">Linux</span>
-                    <span class="tag tag-lang">Networking</span>
-                    <span class="tag">Server Architecture</span>
-                    <span class="tag">Self-Hosting</span>
-                    <span class="tag">Remote Access</span>
-                    <span class="tag">Android</span>
-                    <span class="tag">Cloudflare / ngrok</span>
-                </div>
-            </div>
-
-            <!-- Secondary Grid -->
-            <div class="project-sub-grid">
-
-                <!-- E-Seva -->
-                <div class="project-card card-hoverable reveal">
-                    <div class="project-header">
-                        <div>
-                            <div class="card-name">E-Seva Complaint Management System</div>
-                            <div class="card-sub">Academic Full-Stack Application</div>
-                        </div>
-                        <span class="project-badge badge-completed">Completed</span>
-                    </div>
-
-                    <p class="card-desc">
-                        A full-stack complaint management web application built for an academic project. Enables users to register and view complaints,
-                        and police officers to view, manage, and mark complaints as resolved through an Express REST API backed by MySQL.
-                    </p>
-
-                    <div class="api-list">
-                        <span class="api-tag">POST /api/complaints</span>
-                        <span class="api-tag">GET /api/complaints/my</span>
-                        <span class="api-tag">GET /api/complaints/all</span>
-                        <span class="api-tag">PATCH /api/complaints/:id/resolve</span>
-                    </div>
-
-                    <div class="tag-row" style="margin-top: 12px;">
-                        <span class="tag tag-lang">Node.js</span>
-                        <span class="tag tag-lang">Express</span>
-                        <span class="tag tag-lang">MySQL</span>
-                        <span class="tag tag-lang">JavaScript</span>
-                        <span class="tag">HTML/CSS</span>
-                    </div>
-
-                    <a href="https://github.com/Dani-AX1423/Cop-Friendly-App-Eseva" target="_blank" class="project-link">
-                        View Repository on GitHub ↗
-                    </a>
-                </div>
-
-                <!-- LyTrix Language Support VSCode Extension -->
-                <div class="project-card card-hoverable reveal" style="transition-delay: 0.1s;">
-                    <div class="project-header">
-                        <div>
-                            <div class="card-name">LyTrix Language Support</div>
-                            <div class="card-sub">VS Code Tooling & Grammar Extension</div>
-                        </div>
-                        <span class="project-badge badge-active">Early Development</span>
-                    </div>
-
-                    <p class="card-desc">
-                        Official Visual Studio Code extension providing syntax highlighting and language recognition for <code>.lytx</code> files.
-                        Recognizes core LyTrix constructs (<code>LTDirectiveLayer</code>, <code>LTProgramFileCode</code>, <code>LTGlobalVar</code>, <code>LTMain</code>)
-                        and key tokens (<code>main</code>, <code>return</code>, <code>EOM</code>).
-                    </p>
-
-                    <div class="planned-box">
-                        <div class="planned-title">Planned Features:</div>
-                        <span class="tag">Language Server Protocol (LSP)</span>
-                        <span class="tag">Autocompletion</span>
-                        <span class="tag">Error Detection</span>
-                        <span class="tag">Code Snippets</span>
-                    </div>
-
-                    <div class="tag-row" style="margin-top: 12px;">
-                        <span class="tag tag-lang">JavaScript</span>
-                        <span class="tag tag-lang">VS Code Extension API</span>
-                        <span class="tag">Syntax Highlighting</span>
-                    </div>
-
-                    <a href="https://github.com/Dani-AX1423/LyTrix-Language-Support-Extension" target="_blank" class="project-link">
-                        View Extension Repository ↗
-                    </a>
-                </div>
-
-            </div>
+    <div class="grid lg:grid-cols-[1.3fr_0.7fr] gap-12 mb-16">
+      <!-- PERSONAL STORY ARTICLE -->
+      <div class="space-y-8 text-gray-300 font-light leading-relaxed">
+        <div class="p-8 border border-white/10 bg-black/60 rounded-xl space-y-4">
+          <h3 class="font-serif text-2xl font-bold text-white">Why Systems &amp; Programming Languages First?</h3>
+          <p>My interest in systems programming wasn't triggered by a university assignment — it grew out of frustration with taking execution environments for granted. When building applications, I kept asking what happened between writing a line of code and the CPU executing instructions. This led me straight into lexers, abstract syntax trees, and register allocation.</p>
+          <p>Building <span class="text-white font-medium">LyTrix</span> from scratch taught me that language design is balancing precision and developer ergonomics. Starting with a tree-walk interpreter (<code class="text-orange-400">LyTrix-R</code>) gave me an intuitive grasp of scope resolution and AST traversal. Moving to a QBE IR compiler backend (<code class="text-orange-400">LyTrix-Q</code>) forced me to think in static single-assignment (SSA) form and assembly generation.</p>
         </div>
+
+        <div class="p-8 border border-white/10 bg-black/60 rounded-xl space-y-4">
+          <h3 class="font-serif text-2xl font-bold text-white">Arch Linux + Hyprland: Beyond "Uses Arch BTW"</h3>
+          <p>For me, operating a Linux distribution is about controlling the development surface. Moving from Fedora Silverblue to <span class="text-white font-medium">Arch Linux with Hyprland</span> allowed me to construct a tiling environment mapped to how I process code — minimal latency, keyboard-driven navigation, and zero background clutter.</p>
+          <p>Managing system dotfiles, writing custom Bash scripts for workspace automation, and understanding Linux process lifecycles directly informs how I structure software architectures.</p>
+        </div>
+
+        <div class="p-8 border border-white/10 bg-black/60 rounded-xl space-y-4">
+          <h3 class="font-serif text-2xl font-bold text-white">Competitive Wins: Try.Code &amp; TECHNOVA 2026</h3>
+          <p>Under timed competition pressure at <span class="text-white font-medium">Try.Code (ISTE)</span>, I placed 1st by focusing on algorithmic clarity and clean memory execution under rapid constraint changes.</p>
+          <p>At <span class="text-white font-medium">TECHNOVA 2026 Code Relay</span>, competing as <strong>Team WHITE HATTERS</strong> alongside Bryan Roger B and Yugin Santhosh K, we took 1st Place by coordinating rapid modular code handoffs, debugging logic gates under strict time relays, and submitting high-precision solutions.</p>
+        </div>
+      </div>
+
+      <!-- PHOTO & QUICK TELEMETRY -->
+      <div class="space-y-8">
+        <div class="hero-photo-ring mx-auto max-w-[280px]">
+          <div class="w-[270px] h-[270px] rounded-full overflow-hidden bg-black">
+            <img src="dani_photo.jpeg" alt="Daniel Raj V" class="w-full h-full object-cover object-top" />
+          </div>
+        </div>
+
+        <div class="data-panel p-8">
+          <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+          <div class="font-mono text-xs text-orange-400 font-bold mb-4 uppercase tracking-wider">LATEST TELEMETRY</div>
+          <div class="stat-row"><span class="stat-k">Degree</span><span class="stat-v">B.Tech IT (2024–2028)</span></div>
+          <div class="stat-row"><span class="stat-k">Institution</span><span class="stat-v">LICET, Chennai</span></div>
+          <div class="stat-row"><span class="stat-k">Languages</span><span class="stat-v">Tamil (Native), English, French</span></div>
+          <div class="stat-row"><span class="stat-k">Workstation</span><span class="stat-v">Arch Linux + Hyprland</span></div>
+          <div class="stat-row"><span class="stat-k">Contact</span><span class="stat-v">fortunebros86@gmail.com</span></div>
+        </div>
+      </div>
     </div>
 
-    <!-- ── MINI PROJECTS / EXPLORATIONS ──────────── -->
-    <div class="section">
-        <div class="section-heading reveal">— Mini Projects</div>
-        <h2 class="section-title reveal">Explorations</h2>
-
-        <div class="project-card card-hoverable reveal" style="max-width: 650px;">
-            <div class="project-header">
-                <div>
-                    <div class="card-name">2-Bit Adder</div>
-                    <div class="card-sub">Digital Logic — Academic Exploration</div>
-                </div>
-                <span class="project-badge badge-completed">Academic</span>
+    <!-- ACADEMIC & DEVELOPMENT TIMELINE (2024 -> 2028) -->
+    <div class="mb-16">
+      <h3 class="font-serif text-3xl font-bold text-white mb-8">Milestones &amp; Academic Timeline</h3>
+      <div class="space-y-6">
+        <div class="p-6 border border-white/10 bg-black/60 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-sm text-orange-400 font-bold">2026 &mdash; PRESENT</span>
+            <div>
+              <div class="text-base font-bold text-white">LyTrix-Q SSA Compiler Backend &amp; Industry Internships</div>
+              <div class="text-xs text-gray-400">Developing QBE IR SSA transformations and scaling full-stack engineering tools.</div>
             </div>
-
-            <p class="card-desc">
-                Implemented a 2-bit binary adder using digital logic concepts and displayed the resulting output in decimal form.
-                An academic digital logic exploration demonstrating low-level hardware circuit experimentation.
-            </p>
-
-            <img src="adder-proof.jpg" alt="2-Bit Adder Hardware Proof" class="adder-img" />
+          </div>
+          <span class="tier tier-wip">Active Milestone</span>
         </div>
+
+        <div class="p-6 border border-white/10 bg-black/60 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-sm text-orange-400 font-bold">2026 FEB</span>
+            <div>
+              <div class="text-base font-bold text-white">1st Place — TECHNOVA 2026 Code Relay</div>
+              <div class="text-xs text-gray-400">Team WHITE HATTERS won 1st place in inter-collegiate programming contest at LICET.</div>
+            </div>
+          </div>
+          <span class="tier tier-ore">1st Place Award</span>
+        </div>
+
+        <div class="p-6 border border-white/10 bg-black/60 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-sm text-orange-400 font-bold">2025 NOV</span>
+            <div>
+              <div class="text-base font-bold text-white">Arch Linux Environment &amp; Hardware Adder Sandbox</div>
+              <div class="text-xs text-gray-400">Configured Hyprland dotfiles and built breadboard logic gate 2-bit binary adder.</div>
+            </div>
+          </div>
+          <span class="tier tier-ok">Hardware Verified</span>
+        </div>
+
+        <div class="p-6 border border-white/10 bg-black/60 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-sm text-orange-400 font-bold">2024 AUG</span>
+            <div>
+              <div class="text-base font-bold text-white">Commenced B.Tech IT at LICET &amp; LyTrix Language Genesis</div>
+              <div class="text-xs text-gray-400">Started degree at Loyola-ICAM College of Engineering &amp; Technology; wrote first LyTrix lexer tokens.</div>
+            </div>
+          </div>
+          <span class="tier tier-ok">Genesis</span>
+        </div>
+      </div>
     </div>
 
-    <!-- ── SKILLS SECTION ────────────────────────── -->
-    <div id="skills" class="section">
-        <div class="section-heading reveal">04 — Skills</div>
-        <h2 class="section-title reveal">Technical Foundation</h2>
+    <!-- CROSS LINKING GRAPH -->
+    <div class="pt-8 border-t border-white/10">
+      <div class="font-mono text-xs text-gray-400 mb-4">RELATED NODES IN ARCHIVE GRAPH:</div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#lytrix" class="graph-chip"><span>node //</span> <span class="text-white">LyTrix Language Case Study</span></a>
+        <a href="#parkin-today" class="graph-chip"><span>node //</span> <span class="text-white">Parkin Today ANPR</span></a>
+        <a href="#log" class="graph-chip"><span>node //</span> <span class="text-white">Systems Log</span></a>
+        <a href="#resume" class="graph-chip"><span>node //</span> <span class="text-white">In-Site Resume</span></a>
+      </div>
+    </div>
+  </div>
+</main>
 
-        <div class="skills-grid reveal">
-            <div class="skill-block card-hoverable">
-                <div class="skill-block-title">Programming Languages</div>
-                <ul class="skill-list">
-                    <li>C</li>
-                    <li>Java</li>
-                    <li>Python</li>
-                </ul>
-            </div>
 
-            <div class="skill-block card-hoverable">
-                <div class="skill-block-title">Core Concepts</div>
-                <ul class="skill-list">
-                    <li>Data Structures</li>
-                    <li>System Design</li>
-                    <li>Basic OS Concepts</li>
-                </ul>
-            </div>
-
-            <div class="skill-block card-hoverable">
-                <div class="skill-block-title">Systems & Tools</div>
-                <ul class="skill-list">
-                    <li>Linux</li>
-                    <li>Terminal / Bash</li>
-                    <li>Git & GitHub</li>
-                </ul>
-            </div>
-
-            <div class="skill-block card-hoverable">
-                <div class="skill-block-title">Focus Areas</div>
-                <ul class="skill-list">
-                    <li>Compiler Design</li>
-                    <li>Interpreter Development</li>
-                    <li>Programming Language Dev</li>
-                    <li>System-Level Programming</li>
-                    <li>Networking</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Linux Milestone Box -->
-        <div class="linux-box card-hoverable reveal" style="margin-top: 32px;">
-            <div class="linux-title">🐧 Linux Development Environment Milestone</div>
-            <p class="linux-desc">
-                Transitioned from Fedora Silverblue to Arch Linux, configuring a customized dual-boot Linux development environment
-                utilizing Arch Linux with the Hyprland Wayland compositor, Bash scripting, and Git workflows.
-            </p>
-        </div>
+<!-- =================================================================== -->
+<!-- VIEW 03: /lytrix — LYTRIX CASE STUDY                              -->
+<!-- =================================================================== -->
+<main id="view-lytrix" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="hud-breadcrumb"><span class="text-stone-500">SYS //</span> <span class="crumb-active">~/projects/lytrix</span></div>
     </div>
 
-    <!-- ── ACHIEVEMENTS SECTION ──────────────────── -->
-    <div id="achievements" class="section">
-        <div class="section-heading reveal">05 — Recognition</div>
-        <h2 class="section-title reveal">Achievements & Milestones</h2>
-
-        <div class="ach-list">
-            <div class="ach-item card-hoverable reveal">
-                <div class="ach-icon">🏆</div>
-                <div>
-                    <div class="ach-name">1st Place — Try.Code</div>
-                    <div class="ach-detail">Secured 1st place in the Try.Code coding event organized by ISTE.</div>
-                </div>
-                <div class="ach-award">1st Place</div>
-            </div>
-
-            <div class="ach-item card-hoverable reveal" style="transition-delay: 0.1s;">
-                <div class="ach-icon">🏆</div>
-                <div>
-                    <div class="ach-name">1st Place — Code Relay (TECHNOVA 2026)</div>
-                    <div class="ach-detail">
-                        Secured 1st place as part of team <strong>WHITE HATTERS</strong> (Bryan Roger B, Yugin Santhosh K, Daniel Raj)
-                        in Code Relay at TECHNOVA 2026, conducted by the Dept of IT at LICET in association with CSI.
-                    </div>
-                </div>
-                <div class="ach-award">1st Place (₹750 Voucher)</div>
-            </div>
-
-            <div class="ach-item card-hoverable reveal" style="transition-delay: 0.15s;">
-                <div class="ach-icon">🎖️</div>
-                <div>
-                    <div class="ach-name">100% Attendance Recognition</div>
-                    <div class="ach-detail">Recognized for maintaining 100% attendance during academic period.</div>
-                </div>
-            </div>
-
-            <div class="ach-item card-hoverable reveal" style="transition-delay: 0.2s;">
-                <div class="ach-icon">🖥️</div>
-                <div>
-                    <div class="ach-name">Arch Linux + Hyprland Environment</div>
-                    <div class="ach-detail">Configured a dual-boot Linux development environment using Arch Linux and Hyprland.</div>
-                </div>
-            </div>
-        </div>
+    <div class="sec-mark mb-4">CASE STUDY // 01 &middot; FLAGSHIP LANGUAGE SYSTEM</div>
+    <h1 class="ed-head mb-4" style="font-size:clamp(42px,6vw,84px)">LyTrix<br /><em>Language System.</em></h1>
+    <div class="flex flex-wrap items-center gap-4 mb-12">
+      <a href="https://github.com/Dani-AX1423/LyTrix" target="_blank" class="tier tier-ore">GitHub Repository &#8599;</a>
+      <a href="https://github.com/Dani-AX1423/LyTrix-Language-Support-Extension" target="_blank" class="tier" style="border:1px solid #444;color:#ccc">VS Code Extension &#8599;</a>
+      <span class="tier tier-ok">Java Core</span>
     </div>
 
-    <!-- ── CONTACT SECTION ───────────────────────── -->
-    <div id="contact" class="section">
-        <div class="section-heading reveal">06 — Contact</div>
-        <h2 class="section-title reveal">Get in Touch</h2>
-
-        <div class="contact-grid">
-            <div class="reveal">
-                <p class="contact-desc">
-                    Open to internship opportunities, student developer discussions, and collaborations related to compiler design,
-                    interpreters, Linux systems, and networking.
-                </p>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <a href="mailto:fortunebros86@gmail.com" class="btn btn-primary">Send Email →</a>
-                    <button class="btn btn-ghost" id="copy-email-btn">Copy Email Address 📋</button>
-                    <a href="Daniel_Raj_V_Resume.pdf" target="_blank" class="btn btn-ghost">View Resume PDF 📄</a>
-                </div>
-            </div>
-
-            <div class="contact-links reveal">
-                <div class="contact-row">
-                    <span class="contact-key">Name</span>
-                    <span class="contact-val">Daniel Raj V</span>
-                </div>
-                <div class="contact-row">
-                    <span class="contact-key">Email</span>
-                    <span class="contact-val">
-                        <a href="mailto:fortunebros86@gmail.com">fortunebros86@gmail.com</a>
-                    </span>
-                </div>
-                <div class="contact-row">
-                    <span class="contact-key">Phone</span>
-                    <span class="contact-val">+91 9789802645</span>
-                </div>
-                <div class="contact-row">
-                    <span class="contact-key">Location</span>
-                    <span class="contact-val">Chennai, Tamil Nadu, India</span>
-                </div>
-                <div class="contact-row">
-                    <span class="contact-key">GitHub</span>
-                    <span class="contact-val">
-                        <a href="https://github.com/Dani-AX1423" target="_blank">github.com/Dani-AX1423 ↗</a>
-                    </span>
-                </div>
-                <div class="contact-row">
-                    <span class="contact-key">LinkedIn</span>
-                    <span class="contact-val">
-                        <a href="https://www.linkedin.com/in/daniel-raj-9582a4351/" target="_blank">linkedin.com/in/daniel-raj ↗</a>
-                    </span>
-                </div>
-            </div>
-        </div>
+    <!-- 1. THESIS -->
+    <div class="p-8 border border-orange-500/30 bg-orange-500/10 rounded-xl mb-12">
+      <div class="font-mono text-xs text-orange-400 font-bold mb-2">1. THESIS STATEMENT</div>
+      <p class="text-sm text-gray-200 font-light leading-relaxed">
+        LyTrix was created to explore execution flow at its fundamentals by constructing both a <span class="text-white font-medium">Tree-Walk Interpreter (LyTrix-R)</span> and an <span class="text-white font-medium">Intermediate Representation Compiler (LyTrix-Q)</span> targeting QBE IR, proving that programming languages are best understood by writing their execution engines from scratch.
+      </p>
     </div>
 
-    <!-- ── FOOTER ────────────────────────────────── -->
-    <footer>
-        <p class="footer-text">
-            © Daniel Raj V · LyTrix Language System Developer · LICET, Chennai
+    <!-- 2. THE INTERACTIVE INSTRUMENT: LIVE 5-STAGE PIPELINE -->
+    <div class="mb-16">
+      <div class="font-mono text-xs text-orange-400 font-bold mb-4">2. INTERACTIVE PIPELINE INSTRUMENT</div>
+      <div class="data-panel p-8 w-full">
+        <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+        <div class="flex items-center justify-between mb-6">
+          <span class="text-xs font-mono text-white font-bold">STAGE SELECTOR &mdash; CLICK TO INSPECT PIPELINE TRANSFORMATION</span>
+        </div>
+        <div class="flex items-end justify-center gap-2 mb-8 flex-wrap" id="pipeline-cs">
+          <div class="pipe-node active" data-step="0"><span class="pn-num">01</span><div class="pn-icon">&#128196;</div><span class="pn-name">Source</span></div>
+          <div class="pipe-arrow">&#8594;</div>
+          <div class="pipe-node" data-step="1"><span class="pn-num">02</span><div class="pn-icon">&#128306;</div><span class="pn-name">Lexer</span></div>
+          <div class="pipe-arrow">&#8594;</div>
+          <div class="pipe-node" data-step="2"><span class="pn-num">03</span><div class="pn-icon">&#127795;</div><span class="pn-name">Parser AST</span></div>
+          <div class="pipe-arrow">&#8594;</div>
+          <div class="pipe-node" data-step="3"><span class="pn-num">04</span><div class="pn-icon">&#9881;&#65039;</div><span class="pn-name">QBE IR</span></div>
+          <div class="pipe-arrow">&#8594;</div>
+          <div class="pipe-node" data-step="4"><span class="pn-num">05</span><div class="pn-icon">&#9989;</div><span class="pn-name">Output</span></div>
+        </div>
+        <div class="code-block">
+          <span class="cb-label" id="pipe-label-cs">STAGE 01 - SOURCE CODE READOUT</span>
+          <pre id="pipe-out-cs" class="text-emerald-400 font-mono">LTProgramFileCode main() {
+    LTGlobalVar x = 10 + 20;
+    BackLine(x);
+}</pre>
+          <div id="pipe-telemetry-cs" class="mt-3 pt-3 border-t border-white/10 text-xs text-orange-400 font-mono">
+            [TELEMETRY] Stream Speed: 1.48 Mtok/s | Byte Size: 78 bytes | Status: OK
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. WHAT I ACTUALLY BUILT VS WHAT I USED -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl">
+        <div class="font-mono text-xs text-emerald-400 font-bold mb-4">WHAT I ACTUALLY BUILT</div>
+        <ul class="space-y-3 text-xs text-gray-300 font-light list-disc list-inside">
+          <li>Custom Lexer / Tokenizer scanning primitives, directives, and math operations.</li>
+          <li>Recursive Descent Parser producing typed Abstract Syntax Tree (AST) nodes.</li>
+          <li>AST Visitor pattern interpreter (<code class="text-orange-400">LyTrix-R</code>) handling variable bindings and expression evaluation.</li>
+          <li>QBE Intermediate Representation compiler generator (<code class="text-orange-400">LyTrix-Q</code>).</li>
+          <li>Official VS Code Syntax Highlighting Extension for <code class="text-orange-400">.lytx</code> files.</li>
+        </ul>
+      </div>
+
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl">
+        <div class="font-mono text-xs text-orange-400 font-bold mb-4">WHAT I USED (EXTERNAL DEPS)</div>
+        <ul class="space-y-3 text-xs text-gray-300 font-light list-disc list-inside">
+          <li>Java Standard Library (<code class="text-orange-400">java.util</code>) for internal AST node graphs and token streams.</li>
+          <li>QBE (Quick Backend Engine) toolchain for SSA machine code generation.</li>
+          <li>VS Code Extension API &amp; TextMate grammar specification.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4. TECHNICAL DECISIONS & TRADE-OFFS -->
+    <div class="space-y-8 mb-16">
+      <h3 class="font-serif text-3xl font-bold text-white">Architecture Decisions &amp; Technical Trade-Offs</h3>
+      
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl space-y-3">
+        <h4 class="font-serif text-xl font-bold text-white">Tree-Walk Interpreter vs. Bytecode Virtual Machine</h4>
+        <p class="text-xs text-gray-300 font-light leading-relaxed">
+          I chose a tree-walk interpreter first for <code class="text-orange-400">LyTrix-R</code> to establish direct, unambiguous mapping between the parser's AST and execution state. While tree-walk interpreters suffer performance penalties from pointer-chasing tree traversal, it allowed rapid prototyping of language semantics before introducing bytecode compilation passes.
         </p>
-    </footer>
+      </div>
 
-    <!-- Floating Back To Top Button -->
-    <button class="back-to-top" id="back-to-top" aria-label="Back to Top">↑</button>
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl space-y-3">
+        <h4 class="font-serif text-xl font-bold text-white">QBE IR over LLVM for Compiler Backend (LyTrix-Q)</h4>
+        <p class="text-xs text-gray-300 font-light leading-relaxed">
+          When scaling to a compiled pipeline, I selected QBE (Quick Backend Engine) over LLVM. LLVM is immense and hides backend complexity behind million-line abstractions. QBE provides a clean 70% solution in 10,000 lines of C, allowing me to explicitly construct Single Static Assignment (SSA) form and understand register allocation directly.
+        </p>
+      </div>
+    </div>
 
-    <script src="script.js"></script>
+    <!-- 5. WHAT'S NEXT -->
+    <div class="p-8 border border-white/10 bg-black/60 rounded-xl mb-16">
+      <div class="font-mono text-xs text-orange-400 font-bold mb-2">5. FUTURE MILESTONES &amp; ROADMAP</div>
+      <p class="text-xs text-gray-300 font-light leading-relaxed">
+        Self-hosting the LyTrix parser in LyTrix itself, expanding the standard library, and targeting bare-metal kernel entry points for eventual OS development experiments on Arch Linux.
+      </p>
+    </div>
+
+    <!-- CROSS LINKING GRAPH -->
+    <div class="pt-8 border-t border-white/10">
+      <div class="font-mono text-xs text-gray-400 mb-4">RELATED NODES IN ARCHIVE GRAPH:</div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#adder" class="graph-chip"><span>node //</span> <span class="text-white">2-Bit Binary Adder</span></a>
+        <a href="#parkin-today" class="graph-chip"><span>node //</span> <span class="text-white">Parkin Today ANPR</span></a>
+        <a href="#log" class="graph-chip"><span>node //</span> <span class="text-white">Systems Log</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 04: /parkin-today — PARKIN TODAY CASE STUDY                   -->
+<!-- =================================================================== -->
+<main id="view-parkin-today" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="hud-breadcrumb"><span class="text-stone-500">SYS //</span> <span class="crumb-active">~/projects/parkin-today</span></div>
+    </div>
+
+    <div class="sec-mark mb-4">CASE STUDY // 02 &middot; EDGE AI &amp; INFRASTRUCTURE</div>
+    <h1 class="ed-head mb-4" style="font-size:clamp(42px,6vw,84px)">Parkin Today<br /><em>ANPR Infrastructure.</em></h1>
+    <div class="flex flex-wrap items-center gap-4 mb-12">
+      <span class="tier tier-ore">Jetson Nano Edge</span>
+      <span class="tier tier-ore">Node/Express Phase 2</span>
+      <span class="tier tier-ok">ANPR ML Pipeline</span>
+    </div>
+
+    <!-- 1. THESIS -->
+    <div class="p-8 border border-orange-500/30 bg-orange-500/10 rounded-xl mb-12">
+      <div class="font-mono text-xs text-orange-400 font-bold mb-2">1. THESIS STATEMENT</div>
+      <p class="text-sm text-gray-200 font-light leading-relaxed">
+        Smart parking management requires real-time Automatic License Plate Recognition (ANPR) at low latency, combining edge inference on Jetson Nano hardware with high-concurrency Node.js REST services.
+      </p>
+    </div>
+
+    <!-- 2. ARCHITECTURE INTERACTIVE VISUALIZER -->
+    <div class="mb-16">
+      <div class="font-mono text-xs text-orange-400 font-bold mb-4">2. SYSTEM ARCHITECTURE DIAGRAM</div>
+      <div class="data-panel p-8 w-full">
+        <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+        <div class="grid md:grid-cols-3 gap-6 font-mono text-xs text-gray-300">
+          <div class="p-4 border border-white/10 bg-black/60 rounded-lg">
+            <div class="text-orange-400 font-bold mb-2">EDGE ANPR LAYER</div>
+            <div>Jetson Nano GPU</div>
+            <div>OpenCV License Crop</div>
+            <div>Tesseract / YOLO OCR</div>
+            <div class="text-emerald-400 mt-2">&#8594; Stream to API</div>
+          </div>
+          <div class="p-4 border border-orange-500/30 bg-orange-500/10 rounded-lg">
+            <div class="text-orange-400 font-bold mb-2">PHASE 2 REST BACKEND</div>
+            <div>Node.js / Express API</div>
+            <div>JWT Authentication</div>
+            <div>Parking Slot Allocator</div>
+            <div class="text-emerald-400 mt-2">&#8594; Realtime WebSockets</div>
+          </div>
+          <div class="p-4 border border-white/10 bg-black/60 rounded-lg">
+            <div class="text-orange-400 font-bold mb-2">MOBILE &amp; STORAGE</div>
+            <div>React Native App</div>
+            <div>Supabase Postgres DB</div>
+            <div>Razorpay / Billing API</div>
+            <div class="text-emerald-400 mt-2">&#8594; Mobile Checkout</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. WHAT I BUILT & DECISIONS -->
+    <div class="space-y-8 mb-16">
+      <h3 class="font-serif text-3xl font-bold text-white">Engineering Breakdown &amp; Founder Insights</h3>
+      
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl space-y-3">
+        <h4 class="font-serif text-xl font-bold text-white">Phase 1 (FastAPI) to Phase 2 (Node/Express) Refactor</h4>
+        <p class="text-xs text-gray-300 font-light leading-relaxed">
+          Initial prototyping used FastAPI for quick Python integration with ML scripts. As concurrency requirements grew for multi-gate parking structures, I advocated for migrating API endpoints to Node.js/Express to leverage non-blocking I/O event loops for handling hundreds of concurrent gate camera telemetry pulses while keeping Python restricted to edge hardware.
+        </p>
+      </div>
+
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl space-y-3">
+        <h4 class="font-serif text-xl font-bold text-white">Public Disclosure Scope Note</h4>
+        <p class="text-xs text-gray-400 font-light leading-relaxed">
+          This case study details the system architecture, REST API design, and edge ANPR pipeline built during development, excluding proprietary business metrics and private commercial API keys.
+        </p>
+      </div>
+    </div>
+
+    <!-- CROSS LINKING GRAPH -->
+    <div class="pt-8 border-t border-white/10">
+      <div class="font-mono text-xs text-gray-400 mb-4">RELATED NODES IN ARCHIVE GRAPH:</div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#eseva" class="graph-chip"><span>node //</span> <span class="text-white">E-Seva System</span></a>
+        <a href="#luna-carin" class="graph-chip"><span>node //</span> <span class="text-white">Luna Carin AI</span></a>
+        <a href="#lytrix" class="graph-chip"><span>node //</span> <span class="text-white">LyTrix System</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 05: /luna-carin — LUNA CARIN CASE STUDY                       -->
+<!-- =================================================================== -->
+<main id="view-luna-carin" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="hud-breadcrumb"><span class="text-stone-500">SYS //</span> <span class="crumb-active">~/projects/luna-carin</span></div>
+    </div>
+
+    <div class="sec-mark mb-4">CASE STUDY // 03 &middot; LOCAL INTELLIGENCE</div>
+    <h1 class="ed-head mb-4" style="font-size:clamp(42px,6vw,84px)">Luna Carin<br /><em>AI Assistant.</em></h1>
+
+    <div class="p-8 border border-orange-500/30 bg-orange-500/10 rounded-xl mb-12">
+      <div class="font-mono text-xs text-orange-400 font-bold mb-2">1. THESIS STATEMENT</div>
+      <p class="text-sm text-gray-200 font-light leading-relaxed">
+        Personal AI assistance must prioritize zero-latency local inference and user data privacy over cloud API dependencies.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl">
+        <div class="font-mono text-xs text-emerald-400 font-bold mb-4">WHAT WAS BUILT</div>
+        <p class="text-xs text-gray-300 font-light leading-relaxed">
+          Local assistant interface orchestrating quantized Ollama / Llama models, system task automation scripts, and custom voice/text commands on desktop.
+        </p>
+      </div>
+
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl">
+        <div class="font-mono text-xs text-orange-400 font-bold mb-4">TECH STACK</div>
+        <div class="flex flex-wrap gap-2">
+          <span class="tier tier-ore">Python</span>
+          <span class="tier tier-ore">Ollama LLM</span>
+          <span class="tier tier-ore">Linux IPC</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-white/10">
+      <div class="font-mono text-xs text-gray-400 mb-4">RELATED NODES:</div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#parkin-today" class="graph-chip"><span>node //</span> <span class="text-white">Parkin Today</span></a>
+        <a href="#roam" class="graph-chip"><span>node //</span> <span class="text-white">ROAM.ver Server</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 06: /eseva — E-SEVA CASE STUDY                                -->
+<!-- =================================================================== -->
+<main id="view-eseva" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="hud-breadcrumb"><span class="text-stone-500">SYS //</span> <span class="crumb-active">~/projects/eseva</span></div>
+    </div>
+
+    <div class="sec-mark mb-4">CASE STUDY // 04 &middot; ACADEMIC FULL-STACK</div>
+    <h1 class="ed-head mb-4" style="font-size:clamp(42px,6vw,84px)">E-Seva<br /><em>Complaint Portal.</em></h1>
+    <div class="flex flex-wrap items-center gap-4 mb-12">
+      <a href="https://github.com/Dani-AX1423/Cop-Friendly-App-Eseva" target="_blank" class="tier tier-ore">GitHub Repository &#8599;</a>
+      <span class="tier tier-ok">Express &amp; MySQL</span>
+    </div>
+
+    <div class="p-8 border border-orange-500/30 bg-orange-500/10 rounded-xl mb-12">
+      <div class="font-mono text-xs text-orange-400 font-bold mb-2">1. THESIS STATEMENT</div>
+      <p class="text-sm text-gray-200 font-light leading-relaxed">
+        Streamlining public complaint resolution through structured relational schemas, role-based JWT authentication, and RESTful API state transitions.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl">
+        <div class="font-mono text-xs text-emerald-400 font-bold mb-4">CORE ARCHITECTURE</div>
+        <ul class="space-y-2 text-xs text-gray-300 font-light">
+          <li>&bull; Express.js RESTful API endpoints for complaint lifecycle tracking</li>
+          <li>&bull; MySQL relational database storing user roles &amp; status logs</li>
+          <li>&bull; Password hashing &amp; JWT token authentication middleware</li>
+        </ul>
+      </div>
+
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl">
+        <div class="font-mono text-xs text-orange-400 font-bold mb-4">TECH STACK</div>
+        <div class="flex flex-wrap gap-2">
+          <span class="tier tier-ore">Node.js</span>
+          <span class="tier tier-ore">Express</span>
+          <span class="tier tier-ore">MySQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-white/10">
+      <div class="font-mono text-xs text-gray-400 mb-4">RELATED NODES:</div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#parkin-today" class="graph-chip"><span>node //</span> <span class="text-white">Parkin Today</span></a>
+        <a href="#roam" class="graph-chip"><span>node //</span> <span class="text-white">ROAM.ver Server</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 07: /roam — ROAM.VER POCKET SERVER                            -->
+<!-- =================================================================== -->
+<main id="view-roam" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="hud-breadcrumb"><span class="text-stone-500">SYS //</span> <span class="crumb-active">~/projects/roam</span></div>
+    </div>
+
+    <div class="sec-mark mb-4">CASE STUDY // 05 &middot; POCKET INFRASTRUCTURE</div>
+    <h1 class="ed-head mb-4" style="font-size:clamp(42px,6vw,84px)">ROAM.ver<br /><em>Pocket Server.</em></h1>
+
+    <div class="p-8 border border-orange-500/30 bg-orange-500/10 rounded-xl mb-12">
+      <div class="font-mono text-xs text-orange-400 font-bold mb-2">1. THESIS STATEMENT</div>
+      <p class="text-sm text-gray-200 font-light leading-relaxed">
+        Transforming ultra-portable mobile hardware into a secure zero-trust Linux server node via Termux, Cloudflare Tunnels, and automated SSH port forwarding.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl">
+        <div class="font-mono text-xs text-emerald-400 font-bold mb-4">INFRASTRUCTURE HIGHLIGHTS</div>
+        <p class="text-xs text-gray-300 font-light leading-relaxed">
+          Configured persistent background daemons on Android, managing Cloudflare Tunnel egress rules for exposing local dev servers securely to the public web without static IPv4 requirements.
+        </p>
+      </div>
+
+      <div class="p-8 border border-white/10 bg-black/60 rounded-xl">
+        <div class="font-mono text-xs text-orange-400 font-bold mb-4">STACK &amp; NETWORKING</div>
+        <div class="flex flex-wrap gap-2">
+          <span class="tier tier-ore">Linux (Termux)</span>
+          <span class="tier tier-ore">Cloudflare Tunnels</span>
+          <span class="tier tier-ore">ngrok</span>
+          <span class="tier tier-ore">Bash Scripting</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-white/10">
+      <div class="font-mono text-xs text-gray-400 mb-4">RELATED NODES:</div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#lytrix" class="graph-chip"><span>node //</span> <span class="text-white">LyTrix System</span></a>
+        <a href="#now" class="graph-chip"><span>node //</span> <span class="text-white">Currently Building</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 08: /adder — 2-BIT BINARY ADDER SANDBOX                       -->
+<!-- =================================================================== -->
+<main id="view-adder" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="hud-breadcrumb"><span class="text-stone-500">SYS //</span> <span class="crumb-active">~/projects/2-bit-adder</span></div>
+    </div>
+
+    <div class="sec-mark mb-4">HARDWARE EXPERIMENT // 06</div>
+    <h1 class="ed-head mb-4" style="font-size:clamp(42px,6vw,84px)">2-Bit Binary Adder<br /><em>Hardware Engine.</em></h1>
+
+    <div class="p-8 border border-orange-500/30 bg-orange-500/10 rounded-xl mb-12">
+      <div class="font-mono text-xs text-orange-400 font-bold mb-2">1. THESIS STATEMENT</div>
+      <p class="text-sm text-gray-200 font-light leading-relaxed">
+        Software instructions eventually boil down to voltage signals across physical logic gates. Building a physical 2-bit binary adder using 74LS series IC chips bridges theoretical boolean algebra with hardware reality.
+      </p>
+    </div>
+
+    <!-- INTERACTIVE ADDER SANDBOX -->
+    <div class="mb-16">
+      <div class="font-mono text-xs text-orange-400 font-bold mb-4">2. LIVE INTERACTIVE ADDER SANDBOX</div>
+      <div class="data-panel p-8 w-full">
+        <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+        <div class="flex flex-col lg:flex-row items-start justify-between gap-8">
+          <div class="flex-1 w-full">
+            <p class="text-xs text-gray-400 font-light leading-relaxed mb-6">
+              Toggle bit inputs A0, A1, B0, and B1 to simulate digital gate operations in real-time. Watch XOR, AND, and OR carry propagation update the binary output vector.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              <div class="p-4 border border-white/10 bg-black/60 rounded-lg">
+                <div class="font-mono text-xs text-orange-400 mb-2 font-bold">INPUT VECTOR A</div>
+                <div class="flex gap-2">
+                  <button class="adder-toggle-btn" id="btn-a1-page" data-bit="a1">A1 [0]</button>
+                  <button class="adder-toggle-btn" id="btn-a0-page" data-bit="a0">A0 [0]</button>
+                </div>
+              </div>
+              <div class="p-4 border border-white/10 bg-black/60 rounded-lg">
+                <div class="font-mono text-xs text-orange-400 mb-2 font-bold">INPUT VECTOR B</div>
+                <div class="flex gap-2">
+                  <button class="adder-toggle-btn" id="btn-b1-page" data-bit="b1">B1 [0]</button>
+                  <button class="adder-toggle-btn" id="btn-b0-page" data-bit="b0">B0 [0]</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <span class="cb-label">LOGIC GATE CALCULATOR READOUT</span>
+              <pre id="adder-readout-page" class="text-emerald-400 font-mono">Input A: 0 (00_2)  |  Input B: 0 (00_2)
+Stage 0 (Bit 0 Half-Adder): S0 = 0 ^ 0 = 0  | Carry C1 = 0 & 0 = 0
+Stage 1 (Bit 1 Full-Adder): S1 = 0 ^ 0 ^ 0 = 0 | Carry Out C2 = (0 & 0) | (0 & (0 ^ 0)) = 0
+Binary Output: 000_2  |  Decimal Output: 0</pre>
+            </div>
+          </div>
+
+          <div class="w-full lg:w-80 flex-shrink-0">
+            <div class="font-mono text-xs text-gray-400 mb-2">PHYSICAL BREADBOARD PROOF</div>
+            <img src="adder-proof.jpg" alt="2-Bit Adder Hardware Proof" class="w-full rounded-lg object-cover max-h-[260px] border border-white/10 hover:opacity-100 transition" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CROSS LINKING GRAPH -->
+    <div class="pt-8 border-t border-white/10">
+      <div class="font-mono text-xs text-gray-400 mb-4">RELATED NODES IN ARCHIVE GRAPH:</div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#lytrix" class="graph-chip"><span>node //</span> <span class="text-white">LyTrix Language System</span></a>
+        <a href="#about" class="graph-chip"><span>node //</span> <span class="text-white">About Me</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 09: /log — SYSTEMS LOG GIT-COMMIT FEED                        -->
+<!-- =================================================================== -->
+<main id="view-log" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="hud-breadcrumb"><span class="text-stone-500">SYS //</span> <span class="crumb-active">~/log</span></div>
+    </div>
+
+    <div class="sec-mark mb-4">CHANGELOG // GIT-STYLE COMMIT FEED</div>
+    <h1 class="ed-head mb-8" style="font-size:clamp(42px,6vw,84px)">Systems<br /><em>Log.</em></h1>
+
+    <!-- TAG FILTER BAR -->
+    <div class="flex flex-wrap gap-3 mb-12">
+      <button class="log-filter-btn px-4 py-1.5 rounded-full font-mono text-xs border border-orange-500 bg-orange-500 text-black font-bold active" data-tag="all">ALL ENTRIES</button>
+      <button class="log-filter-btn px-4 py-1.5 rounded-full font-mono text-xs border border-white/10 text-gray-400 hover:border-orange-500 transition" data-tag="lytrix">#LYTRIX</button>
+      <button class="log-filter-btn px-4 py-1.5 rounded-full font-mono text-xs border border-white/10 text-gray-400 hover:border-orange-500 transition" data-tag="internship">#INTERNSHIP</button>
+      <button class="log-filter-btn px-4 py-1.5 rounded-full font-mono text-xs border border-white/10 text-gray-400 hover:border-orange-500 transition" data-tag="infra">#INFRA</button>
+      <button class="log-filter-btn px-4 py-1.5 rounded-full font-mono text-xs border border-white/10 text-gray-400 hover:border-orange-500 transition" data-tag="wins">#WINS</button>
+    </div>
+
+    <!-- LOG FEED ITEMS -->
+    <div class="space-y-6">
+      <div class="log-feed-item p-6 border border-white/10 bg-black/60 rounded-xl flex flex-col md:flex-row items-start justify-between gap-4" data-tags="lytrix infra">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-mono text-xs text-orange-400 font-bold">2026-09-10</span>
+            <span class="tier tier-ore">#lytrix</span>
+            <span class="tier tier-ore">#infra</span>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">LyTrix-Q SSA Form Transformations &amp; QBE Integration</h3>
+          <p class="text-xs text-gray-300 font-light leading-relaxed mb-4">
+            Successfully generated single static assignment (SSA) virtual registers in Java for consumption by the QBE intermediate representation backend.
+          </p>
+          <a href="#lytrix" class="text-xs font-mono text-orange-400 hover:underline">View LyTrix Pipeline &#8594;</a>
+        </div>
+      </div>
+
+      <div class="log-feed-item p-6 border border-white/10 bg-black/60 rounded-xl flex flex-col md:flex-row items-start justify-between gap-4" data-tags="wins">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-mono text-xs text-orange-400 font-bold">2026-02-18</span>
+            <span class="tier tier-ore">#wins</span>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">1st Place Win — TECHNOVA 2026 Code Relay</h3>
+          <p class="text-xs text-gray-300 font-light leading-relaxed mb-4">
+            Team WHITE HATTERS (Bryan Roger B, Yugin Santhosh K, Daniel Raj) took 1st place in the inter-collegiate Code Relay event at LICET Dept of IT &amp; CSI.
+          </p>
+          <a href="#about" class="text-xs font-mono text-orange-400 hover:underline">Read Milestone Detail &#8594;</a>
+        </div>
+      </div>
+
+      <div class="log-feed-item p-6 border border-white/10 bg-black/60 rounded-xl flex flex-col md:flex-row items-start justify-between gap-4" data-tags="infra">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-mono text-xs text-orange-400 font-bold">2025-11-04</span>
+            <span class="tier tier-ore">#infra</span>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Arch Linux + Hyprland Custom Workstation Migration</h3>
+          <p class="text-xs text-gray-300 font-light leading-relaxed mb-4">
+            Configured Arch Linux dual-boot setup with Hyprland Wayland compositor, custom Bash shortcuts, and zero-latency terminal workflows.
+          </p>
+        </div>
+      </div>
+
+      <div class="log-feed-item p-6 border border-white/10 bg-black/60 rounded-xl flex flex-col md:flex-row items-start justify-between gap-4" data-tags="wins">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-mono text-xs text-orange-400 font-bold">2025-08-14</span>
+            <span class="tier tier-ore">#wins</span>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">1st Place — Try.Code (ISTE) Coding Competition</h3>
+          <p class="text-xs text-gray-300 font-light leading-relaxed mb-4">
+            Secured top rank in ISTE Try.Code programming challenge, demonstrating algorithmic execution efficiency under timed constraints.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 10: /resume — IN-SITE INTERACTIVE RESUME                      -->
+<!-- =================================================================== -->
+<main id="view-resume" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="flex items-center gap-4">
+        <a href="Daniel_Raj_V_Resume.pdf" target="_blank" class="cta">Download PDF &#8599;</a>
+        <button onclick="window.print()" class="cta cta-fill">Print Resume &#128438;</button>
+      </div>
+    </div>
+
+    <div class="data-panel p-10 w-full mb-12">
+      <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+      
+      <!-- RESUME HEADER -->
+      <div class="border-b border-white/15 pb-8 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <h1 class="font-serif text-4xl font-bold text-white mb-2">Daniel Raj V</h1>
+          <div class="font-mono text-xs text-orange-400">System Programming Enthusiast &middot; LyTrix Language Developer</div>
+          <div class="font-mono text-xs text-gray-400 mt-1">B.Tech IT &middot; LICET Chennai (2024&ndash;2028)</div>
+        </div>
+        <div class="font-mono text-xs text-gray-300 space-y-1">
+          <div>Email: <a href="mailto:fortunebros86@gmail.com" class="text-orange-400">fortunebros86@gmail.com</a></div>
+          <div>GitHub: <a href="https://github.com/Dani-AX1423" target="_blank" class="text-orange-400">Dani-AX1423</a></div>
+          <div>LinkedIn: <a href="https://www.linkedin.com/in/daniel-raj-9582a4351/" target="_blank" class="text-orange-400">daniel-raj</a></div>
+          <div>Location: Chennai, TN, India</div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="mb-8">
+        <div class="font-mono text-xs text-orange-400 font-bold mb-4 uppercase tracking-widest border-b border-orange-500/20 pb-1">EDUCATION</div>
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="text-base font-bold text-white">Loyola-ICAM College of Engineering and Technology (LICET)</div>
+            <div class="text-xs text-gray-300">Bachelor of Technology in Information Technology</div>
+          </div>
+          <div class="font-mono text-xs text-orange-400">2024 &ndash; 2028</div>
+        </div>
+      </div>
+
+      <!-- TECHNICAL SKILLS -->
+      <div class="mb-8">
+        <div class="font-mono text-xs text-orange-400 font-bold mb-4 uppercase tracking-widest border-b border-orange-500/20 pb-1">TECHNICAL SKILLS MATRIX</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono text-gray-300">
+          <div><span class="text-orange-400 font-bold">Languages:</span> C, Java, Python</div>
+          <div><span class="text-orange-400 font-bold">Systems:</span> Linux, Arch, Hyprland</div>
+          <div><span class="text-orange-400 font-bold">Focus:</span> Compilers, AST, QBE IR</div>
+          <div><span class="text-orange-400 font-bold">Tools:</span> Git, Bash, Termux, Node</div>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="mb-8">
+        <div class="font-mono text-xs text-orange-400 font-bold mb-4 uppercase tracking-widest border-b border-orange-500/20 pb-1">FEATURED PROJECTS</div>
+        
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-sm font-bold text-white">LyTrix Language System (LyTrix-R &amp; LyTrix-Q)</span>
+              <span class="font-mono text-xs text-orange-400">Java &middot; QBE IR</span>
+            </div>
+            <p class="text-xs text-gray-300 font-light">Built a custom programming language from scratch. LyTrix-R implements an AST visitor tree-walk interpreter. LyTrix-Q compiles intermediate representations targeting QBE IR in SSA form.</p>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-sm font-bold text-white">Parkin Today — ANPR Smart Parking</span>
+              <span class="font-mono text-xs text-orange-400">Jetson Nano &middot; Node.js</span>
+            </div>
+            <p class="text-xs text-gray-300 font-light">Edge-based Automatic License Plate Recognition system using Jetson Nano hardware and high-concurrency Node/Express REST backend.</p>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-sm font-bold text-white">2-Bit Binary Adder Hardware Implementation</span>
+              <span class="font-mono text-xs text-orange-400">Hardware Logic &middot; Breadboard</span>
+            </div>
+            <p class="text-xs text-gray-300 font-light">Synthesized 2-bit binary adder using 74LS86, 74LS08, and 74LS32 IC chips to verify digital gate carry propagation and boolean logic.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACHIEVEMENTS -->
+      <div>
+        <div class="font-mono text-xs text-orange-400 font-bold mb-4 uppercase tracking-widest border-b border-orange-500/20 pb-1">ACHIEVEMENTS &amp; AWARDS</div>
+        <ul class="space-y-2 text-xs text-gray-300 font-light">
+          <li>&bull; <strong class="text-white">1st Place</strong> &mdash; Code Relay, TECHNOVA 2026 (Team WHITE HATTERS)</li>
+          <li>&bull; <strong class="text-white">1st Place</strong> &mdash; Try.Code Competition (ISTE)</li>
+          <li>&bull; <strong class="text-white">100% Attendance Recognition</strong> at LICET</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 11: /now — CURRENTLY BUILDING                                 -->
+<!-- =================================================================== -->
+<main id="view-now" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="hud-breadcrumb"><span class="text-stone-500">SYS //</span> <span class="crumb-active">~/now</span></div>
+    </div>
+
+    <div class="sec-mark mb-4">LIVE STATUS // UPDATED SEPTEMBER 2026</div>
+    <h1 class="ed-head mb-8" style="font-size:clamp(42px,6vw,84px)">Currently<br /><em>Building.</em></h1>
+
+    <div class="p-8 border border-orange-500/30 bg-orange-500/10 rounded-xl space-y-4 max-w-3xl">
+      <div class="flex items-center gap-2 text-xs text-orange-400 font-mono">
+        <span class="w-3 h-3 rounded-full bg-orange-500 animate-ping"></span>
+        <span class="font-bold">ACTIVE FOCUS</span>
+      </div>
+      <p class="text-sm text-gray-200 font-mono leading-relaxed">
+        1. Scaling <strong class="text-white">LyTrix-Q</strong> compiler backend generation for QBE IR with Single Static Assignment (SSA) virtual registers.<br /><br />
+        2. Exploring bare-metal kernel entry points and OS low-level execution structures.<br /><br />
+        3. Optimizing dotfile workflows on <strong class="text-white">Arch Linux + Hyprland</strong>.
+      </p>
+    </div>
+  </div>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 12: /contact — MINIMAL DIRECT CONTACT                         -->
+<!-- =================================================================== -->
+<main id="view-contact" class="view-page py-24">
+  <div class="max-w-6xl mx-auto px-8">
+    <div class="flex items-center justify-between mb-8">
+      <a href="#overview" class="back-overview-btn">&#8592; Back to overview</a>
+      <div class="hud-breadcrumb"><span class="text-stone-500">SYS //</span> <span class="crumb-active">~/contact</span></div>
+    </div>
+
+    <div class="sec-mark mb-4">DIRECT TERMINAL // GET IN TOUCH</div>
+    <h1 class="ed-head mb-8" style="font-size:clamp(42px,6vw,84px)">Contact<br /><em>Daniel.</em></h1>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div class="flex flex-col gap-4">
+        <a href="mailto:fortunebros86@gmail.com" class="cta cta-fill text-center justify-center">Send Email Direct &#8594;</a>
+        <button id="copy-email-page" onclick="navigator.clipboard.writeText('fortunebros86@gmail.com');alert('Email copied to clipboard!')" class="cta text-center justify-center">Copy Email Address &#128203;</button>
+        <a href="Daniel_Raj_V_Resume.pdf" target="_blank" class="cta text-center justify-center">Download Resume PDF &#8599;</a>
+      </div>
+
+      <div class="data-panel p-8">
+        <svg class="border-svg" aria-hidden="true"><rect x="1" y="1" width="300" height="300" /></svg>
+        <div class="stat-row"><span class="stat-k">Name</span><span class="stat-v">Daniel Raj V</span></div>
+        <div class="stat-row"><span class="stat-k">Email</span><span class="stat-v"><a href="mailto:fortunebros86@gmail.com" class="text-orange-400">fortunebros86@gmail.com</a></span></div>
+        <div class="stat-row"><span class="stat-k">Phone</span><span class="stat-v">+91 9789802645</span></div>
+        <div class="stat-row"><span class="stat-k">GitHub</span><span class="stat-v"><a href="https://github.com/Dani-AX1423" target="_blank" class="text-orange-400">Dani-AX1423 &#8599;</a></span></div>
+        <div class="stat-row"><span class="stat-k">LinkedIn</span><span class="stat-v"><a href="https://www.linkedin.com/in/daniel-raj-9582a4351/" target="_blank" class="text-orange-400">daniel-raj &#8599;</a></span></div>
+        <div class="stat-row"><span class="stat-k">Location</span><span class="stat-v">Chennai, TN, India</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- =================================================================== -->
+<!-- VIEW 13: /404 — SEGFAULT CORE DUMPED ERROR PAGE                     -->
+<!-- =================================================================== -->
+<main id="view-404" class="view-page py-32 text-center">
+  <div class="max-w-2xl mx-auto px-8">
+    <div class="font-mono text-xs text-orange-500 font-bold mb-4 tracking-widest">SIGSEGV // CORE DUMPED</div>
+    <h1 class="font-serif text-6xl font-bold text-white mb-6">Segmentation Fault 404</h1>
+    <p class="text-xs font-mono text-gray-400 mb-8">
+      [0x00007FFF89A2] Invalid memory dereference at requested route address.<br />
+      The target symbol or page path does not exist in memory.
+    </p>
+    <a href="#overview" class="cta cta-fill">&#8592; Return to Overview</a>
+  </div>
+</main>
+
+
+<footer class="border-t border-white/10 py-8 mt-24">
+  <div class="max-w-6xl mx-auto px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-gray-500">
+    <span>&#169; 2024 Daniel Raj V &middot; LICET Chennai</span>
+    <span>LyTrix Language System Developer</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
-
 </html>
